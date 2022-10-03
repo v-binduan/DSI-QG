@@ -3,6 +3,7 @@ from tqdm import tqdm
 import datasets
 from torch.utils.data import Dataset
 from transformers import PreTrainedTokenizer, DataCollatorWithPadding
+import pandas as pd
 
 
 class IndexingTrainDataset(Dataset):
@@ -11,37 +12,28 @@ class IndexingTrainDataset(Dataset):
             path_to_data,
             max_length: int,
             cache_dir: str,
-            tokenizer: PreTrainedTokenizer,
-            remove_prompt=False,
+            tokenizer: PreTrainedTokenizer
     ):
-        self.train_data = datasets.load_dataset(
-            'json',
-            data_files=path_to_data,
-            ignore_verifications=False,
-            cache_dir=cache_dir
-        )['train']
+        self.train_data=pd.read_csv(path_to_data, \
+                     names=['query', 'content'],\
+                     header=None, sep='\t',encoding='utf8')
 
         self.max_length = max_length
         self.tokenizer = tokenizer
-        self.remove_prompt = remove_prompt
         self.total_len = len(self.train_data)
-        self.valid_ids = set()
-        for data in tqdm(self.train_data):
-            self.valid_ids.add(str(data['text_id']))
 
     def __len__(self):
         return self.total_len
 
     def __getitem__(self, item):
-        data = self.train_data[item]
-        if self.remove_prompt:
-            data['text'] = data['text'][9:] if data['text'].startswith('Passage: ') else data['text']
-            data['text'] = data['text'][10:] if data['text'].startswith('Question: ') else data['text']
-        input_ids = self.tokenizer(data['text'],
+        data = self.train_data.iloc[item]
+        query=data['query']
+        content=data['content']
+        content_ids = self.tokenizer(content,
                                    return_tensors="pt",
                                    truncation='only_first',
                                    max_length=self.max_length).input_ids[0]
-        return input_ids, str(data['text_id'])
+        return content_ids,query
 
 
 class GenerateDataset(Dataset):
@@ -89,6 +81,7 @@ class GenerateDataset(Dataset):
                                    return_tensors="pt",
                                    truncation='only_first',
                                    max_length=self.max_length).input_ids[0]
+                                   
         return input_ids, int(docid)
 
 
@@ -96,14 +89,11 @@ class GenerateDataset(Dataset):
 class IndexingCollator(DataCollatorWithPadding):
     def __call__(self, features):
         input_ids = [{'input_ids': x[0]} for x in features]
-        docids = [x[1] for x in features]
-        inputs = super().__call__(input_ids)
-
+        queries = [x[1] for x in features]
         labels = self.tokenizer(
-            docids, padding="longest", return_tensors="pt"
+            queries, padding="longest", return_tensors="pt"
         ).input_ids
-
-        # replace padding token id's of the labels by -100 according to https://huggingface.co/docs/transformers/model_doc/t5#training
+        inputs=super().__call__(input_ids)
         labels[labels == self.tokenizer.pad_token_id] = -100
         inputs['labels'] = labels
         return inputs

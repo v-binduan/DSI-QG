@@ -14,14 +14,12 @@ from transformers import (
 from trainer import DSITrainer, DocTqueryTrainer
 import numpy as np
 import torch
-import wandb
 from torch.utils.data import DataLoader
 from dataclasses import dataclass, field
 from typing import Optional
 import json
 from tqdm import tqdm
 set_seed(313)
-
 
 @dataclass
 class RunArguments:
@@ -67,12 +65,6 @@ def main():
     parser = HfArgumentParser((TrainingArguments, RunArguments))
     training_args, run_args = parser.parse_args_into_dataclasses()
 
-    # We use wandb logger: https://wandb.ai/site.
-    if training_args.local_rank == 0:  # only on main process
-        # Initialize wandb run
-        wandb.login()
-        wandb.init(project="DSI", name=training_args.run_name)
-
     if 'mt5' in run_args.model_name:
         tokenizer = MT5Tokenizer.from_pretrained(run_args.model_name, cache_dir='cache')
         fast_tokenizer = MT5TokenizerFast.from_pretrained(run_args.model_name, cache_dir='cache')
@@ -97,7 +89,6 @@ def main():
         valid_dataset = IndexingTrainDataset(path_to_data=run_args.valid_file,
                                              max_length=run_args.max_length,
                                              cache_dir='cache',
-                                             remove_prompt=run_args.remove_prompt,
                                              tokenizer=tokenizer)
         trainer = DocTqueryTrainer(
             do_generation=False,
