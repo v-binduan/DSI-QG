@@ -154,7 +154,6 @@ def main():
                                            max_length=run_args.max_length,
                                            cache_dir='cache',
                                            tokenizer=tokenizer)
-
         trainer = DocTqueryTrainer(
             do_generation=True,
             model=model,
@@ -169,13 +168,15 @@ def main():
                                           top_k=run_args.top_k,
                                           num_return_sequences=run_args.num_return_sequences,
                                           max_length=run_args.q_max_length)
-        with open(f"{run_args.valid_file}.q{run_args.num_return_sequences}.docTquery", 'w') as f:
+        with open("/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/doc2query_trained_nq.tsv", 'w') as f:
             for batch_tokens, batch_ids in tqdm(zip(predict_results.predictions, predict_results.label_ids),
                                                 desc="Writing file"):
                 for tokens, docid in zip(batch_tokens, batch_ids):
                     query = fast_tokenizer.decode(tokens, skip_special_tokens=True)
                     jitem = json.dumps({'text_id': docid.item(), 'text': query})
                     f.write(jitem + '\n')
+                    f.flush()
+            f.close()
 
     else:
         raise NotImplementedError("--task should be in 'DSI' or 'docTquery' or 'generation'")

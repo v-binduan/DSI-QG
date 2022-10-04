@@ -37,16 +37,6 @@ class IndexingTrainDataset(Dataset):
 
 
 class GenerateDataset(Dataset):
-    lang2mT5 = dict(
-        ar='Arabic',
-        bn='Bengali',
-        fi='Finnish',
-        ja='Japanese',
-        ko='Korean',
-        ru='Russian',
-        te='Telugu'
-    )
-
     def __init__(
             self,
             path_to_data,
@@ -57,15 +47,8 @@ class GenerateDataset(Dataset):
         self.data = []
         with open(path_to_data, 'r') as f:
             for data in f:
-                if 'xorqa' in path_to_data:
-                    docid, passage, title = data.split('\t')
-                    for lang in self.lang2mT5.values():
-                        self.data.append((docid, f'Generate {lang} question: {title}</s>{passage}'))
-                elif 'msmarco' in path_to_data:
-                    docid, passage = data.split('\t')
-                    self.data.append((docid, f'{passage}'))
-                else:
-                    raise NotImplementedError(f"dataset {path_to_data} for docTquery generation is not defined.")
+                title, content = data.split('\t')
+                self.data.append((title, f'{content}'))
 
         self.max_length = max_length
         self.tokenizer = tokenizer
@@ -76,13 +59,13 @@ class GenerateDataset(Dataset):
         return self.total_len
 
     def __getitem__(self, item):
-        docid, text = self.data[item]
-        input_ids = self.tokenizer(text,
+        title, content = self.data[item]
+        input_ids = self.tokenizer(content,
                                    return_tensors="pt",
                                    truncation='only_first',
                                    max_length=self.max_length).input_ids[0]
                                    
-        return input_ids, int(docid)
+        return input_ids, item
 
 
 @dataclass
@@ -103,7 +86,8 @@ class IndexingCollator(DataCollatorWithPadding):
 class QueryEvalCollator(DataCollatorWithPadding):
     def __call__(self, features):
         input_ids = [{'input_ids': x[0]} for x in features]
-        labels = [x[1] for x in features]
+        ids = [x[1] for x in features]
         inputs = super().__call__(input_ids)
-
-        return inputs, labels
+        inputs['labels'] = ids
+        
+        return inputs

@@ -90,25 +90,26 @@ class DocTqueryTrainer(Trainer):
         prediction_loss_only: bool,
         ignore_keys: Optional[List[str]] = None,
     ) -> Tuple[Optional[torch.Tensor], Optional[torch.Tensor], Optional[torch.Tensor]]:
-
         if not self.do_generation:
             return super().prediction_step(
                 model, inputs, prediction_loss_only=prediction_loss_only, ignore_keys=ignore_keys
             )
 
         outputs = self.model.generate(
-            input_ids=inputs[0]['input_ids'].to(self.args.device),
-            attention_mask=inputs[0]['attention_mask'].to(self.args.device),
+            input_ids=inputs['input_ids'].to(self.args.device),
+            attention_mask=inputs['attention_mask'].to(self.args.device),
             max_length=self.max_length,
             do_sample=True,
             top_k=self.top_k,
             num_return_sequences=self.num_return_sequences)
-        labels = torch.tensor(inputs[1], device=self.args.device).repeat_interleave(self.num_return_sequences)
+
+        labels = torch.tensor(inputs["labels"], device=self.args.device).repeat_interleave(self.num_return_sequences)
 
         if outputs.shape[-1] < self.max_length:
             outputs = self._pad_tensors_to_max_len(outputs, self.max_length)
-        return (None, outputs.reshape(inputs[0]['input_ids'].shape[0], self.num_return_sequences, -1),
-                labels.reshape(inputs[0]['input_ids'].shape[0], self.num_return_sequences, -1))
+        
+        return (None, outputs.reshape(inputs['input_ids'].shape[0], self.num_return_sequences, -1),
+                labels.reshape(inputs['input_ids'].shape[0], self.num_return_sequences, -1))
 
     def _pad_tensors_to_max_len(self, tensor, max_length):
         if self.tokenizer is not None and hasattr(self.tokenizer, "pad_token_id"):

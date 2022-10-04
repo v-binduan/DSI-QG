@@ -1,0 +1,13 @@
+python3 -m torch.distributed.launch --nproc_per_node=8 run.py \
+        --task generation \
+        --model_name t5-large \
+        --model_path models/nq_docTquery_t5_large/checkpoint-2000 \
+        --per_device_eval_batch_size 32 \
+        --run_name docTquery-NQ-generation \
+        --max_length 128 \
+        --valid_file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/nq_doc_content.tsv \
+        --output_dir temp \
+        --dataloader_num_workers 10 \
+        --report_to wandb \
+        --logging_steps 100 \
+        --num_return_sequences 10
