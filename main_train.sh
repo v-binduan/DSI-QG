@@ -11,14 +11,14 @@ python3 -m torch.distributed.launch --nproc_per_node=8 run.py \
         --per_device_train_batch_size 4 \
         --per_device_eval_batch_size 4 \
         --evaluation_strategy steps \
-        --eval_steps 10000 \
+        --eval_steps 200 \
         --num_train_epochs 2 \
         --save_strategy steps \
         --dataloader_num_workers 10 \
-        --save_steps 100 \
+        --save_steps 200 \
         --save_total_limit 2 \
         --load_best_model_at_end \
         --gradient_accumulation_steps 4 \
-        --logging_steps 10000 \
+        --logging_steps 200 \
         --report_to none \
         --dataloader_drop_last False
