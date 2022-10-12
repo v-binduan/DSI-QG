@@ -1,24 +1,24 @@
 python3 -m torch.distributed.launch --nproc_per_node=8 run.py \
         --task "docTquery" \
-        --model_name "t5-large" \
+        --model_name "castorini/doc2query-t5-large-msmarco" \
         --run_name "docTquery-NQ" \
-        --max_length 128 \
+        --max_length 512 \
         --train_file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/nq_train_query_content.tsv \
         --valid_file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/nq_dev_query_content.tsv \
         --output_dir "models/nq_docTquery_t5_large" \
         --learning_rate 0.0001 \
         --warmup_steps 0 \
-        --per_device_train_batch_size 8 \
+        --per_device_train_batch_size 4 \
         --per_device_eval_batch_size 4 \
         --evaluation_strategy steps \
-        --eval_steps 100 \
-        --max_steps 2000 \
+        --eval_steps 10000 \
+        --num_train_epochs 2 \
         --save_strategy steps \
         --dataloader_num_workers 10 \
         --save_steps 100 \
         --save_total_limit 2 \
         --load_best_model_at_end \
         --gradient_accumulation_steps 4 \
-        --logging_steps 100 \
-        --report_to wandb \
+        --logging_steps 10000 \
+        --report_to none \
         --dataloader_drop_last False
