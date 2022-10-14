@@ -11,7 +11,7 @@ from transformers import (
     HfArgumentParser,
     set_seed,
 )
-from trainer import DSITrainer, DocTqueryTrainer
+from trainer import DSITrainer, DocTqueryTrainer, DocTembeddingTrainer
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
@@ -168,7 +168,7 @@ def main():
                                           top_k=run_args.top_k,
                                           num_return_sequences=run_args.num_return_sequences,
                                           max_length=run_args.q_max_length)
-        with open("/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/doc2query_trained_nq.tsv", 'w') as f:
+        with open("/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/doc2query_trained_nq_2_epoch.tsv", 'w') as f:
             for batch_tokens, batch_ids in tqdm(zip(predict_results.predictions, predict_results.label_ids),
                                                 desc="Writing file"):
                 for tokens, docid in zip(batch_tokens, batch_ids):
@@ -176,6 +176,30 @@ def main():
                     jitem = json.dumps({'text_id': docid.item(), 'text': query})
                     f.write(jitem + '\n')
                     f.flush()
+            f.close()
+    
+    elif run_args.task == 'embedding':
+        generate_dataset = GenerateDataset(path_to_data=run_args.valid_file,
+                                           max_length=run_args.max_length,
+                                           cache_dir='cache',
+                                           tokenizer=tokenizer)
+        trainer = DocTembeddingTrainer(
+            model=model,
+            tokenizer=tokenizer,
+            args=training_args,
+            data_collator=QueryEvalCollator(
+                tokenizer,
+                padding='longest',
+            ),
+        )
+        predict_results = trainer.predict(generate_dataset)
+        with open("/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/doc_content_embedding_t5_epoch_2.tsv", 'w') as f:
+            for emb, id in tqdm(zip(predict_results.predictions, predict_results.label_ids),
+                                                desc="Writing file"):
+                embedding = '|'.join([str(elem) for elem in emb])
+                jitem = json.dumps({'text_id': id.item(), 'emb': embedding})
+                f.write(jitem + '\n')
+                f.flush()
             f.close()
 
     else:

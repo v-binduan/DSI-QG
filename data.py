@@ -49,7 +49,7 @@ class GenerateDataset(Dataset):
             for data in f:
                 title, content = data.split('\t')
                 self.data.append((title, f'{content}'))
-
+        #self.data=self.data[:1000]
         self.max_length = max_length
         self.tokenizer = tokenizer
         self.total_len = len(self.data)

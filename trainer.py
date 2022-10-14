@@ -143,3 +143,41 @@ class DocTqueryTrainer(Trainer):
         self.num_return_sequences = num_return_sequences
         self.top_k = top_k
         return super().predict(test_dataset, ignore_keys=ignore_keys, metric_key_prefix=metric_key_prefix)
+
+
+
+class DocTembeddingTrainer(Trainer):
+    def __init__(self, **kwds):
+        super().__init__(**kwds)
+
+    def compute_loss(self, model, inputs, return_outputs=False):
+        loss = model(input_ids=inputs['input_ids'], attention_mask=inputs['attention_mask'], labels=inputs['labels']).loss
+        if return_outputs:
+            return loss, [None, None]  # fake outputs
+        return loss
+
+    def prediction_step(
+        self,
+        model: nn.Module,
+        inputs: Dict[str, Union[torch.Tensor, Any]],
+        prediction_loss_only: bool,
+        ignore_keys: Optional[List[str]] = None,
+    ) -> Tuple[Optional[torch.Tensor], Optional[torch.Tensor], Optional[torch.Tensor]]:
+        encoder=self.model.get_encoder()
+        input_ids=inputs['input_ids'].to(self.args.device)
+        attention_mask=inputs['attention_mask'].to(self.args.device)
+        #odict_keys(['last_hidden_state'])
+        model_output = encoder(input_ids=input_ids,attention_mask=attention_mask, return_dict=True)
+        last_hidden_state=model_output['last_hidden_state']
+        embeddings=(last_hidden_state * attention_mask.unsqueeze(-1).type_as(last_hidden_state)).sum(1) / attention_mask.sum(-1, keepdim=True).type_as(last_hidden_state) #[batch_size, hidden_size]
+        labels = torch.tensor(inputs["labels"], device=self.args.device)
+
+        return (None,embeddings.detach(),labels)
+
+    def predict(
+            self,
+            test_dataset: Dataset,
+            ignore_keys: Optional[List[str]] = None,
+            metric_key_prefix: str = "test"
+    ):
+        return super().predict(test_dataset, ignore_keys=ignore_keys, metric_key_prefix=metric_key_prefix)
