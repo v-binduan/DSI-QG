@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+<!-- NEEDED TO CHANGE -->
+
+<property>
+  <name>hadoop.job.ugi</name>
+  <!--<value>fcr-roi,bdlsyimcz</value>-->
+  <value>implcs,implcsuser</value>
+  <description>SaK2VqfEDeXzKPor, username, password used by client</description>
+</property>
+
+<property>
+  <name>fs.default.name</name>
+  <value>afs://cnw-xa-main.afs.baidu.com:9902</value>
+  <description>The name of the default file system.  A URI whose
+  scheme and authority determine the FileSystem implementation.  The
+  uri's scheme determines the config property (fs.SCHEME.impl) naming
+  the FileSystem implementation class.  The uri's authority is used to
+  determine the host, port, etc. for a filesystem.</description>
+</property>
+
+<property>
+  <name>mapred.job.tracker</name>
+  <!--value>cq02-mix-job0.cq02.baidu.com:64311</value-->
+  <!--value>cq02-baihua-job.dmop.baidu.com:64311</value-->
+  <value>cnw-xa-main-job.dmop.baidu.com:54311</value>
+  <description>The host and port that the MapReduce job tracker runs
+  at.  If "local", then jobs are run in-process as a single map
+  and reduce task.
+  </description>
+</property>
+
+<property>
+    <name>mapred.job.queue.name</name>
+    <!--<value>fcr-roi-hb</value>-->
+    <value>implcs</value>
+    <description>
+        job queue name
+    </description>
+</property>
+
+<property>                                                                                                                        
+    <name>dfs.use.native.api</name>                                                                                                  
+    <value>0</value>                                                                                                                 
+</property> 
+
+<property>
+    <name>dfs.delete.trash</name>
+    <value>1</value>
+</property>
+
+</configuration>
+
