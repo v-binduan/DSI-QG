@@ -168,12 +168,13 @@ def main():
                                           top_k=run_args.top_k,
                                           num_return_sequences=run_args.num_return_sequences,
                                           max_length=run_args.q_max_length)
-        with open("/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/doc2query_trained_nq.tsv", 'w') as f:
+        with open("/mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/triviaqa_doc2query_base_512_15.tsv", 'w') as f:
             for batch_tokens, batch_ids in tqdm(zip(predict_results.predictions, predict_results.label_ids),
                                                 desc="Writing file"):
                 for tokens, docid in zip(batch_tokens, batch_ids):
                     query = fast_tokenizer.decode(tokens, skip_special_tokens=True)
-                    jitem = json.dumps({'text_id': docid.item(), 'text': query})
+                    title, content = generate_dataset.data[docid[0]]
+                    jitem = json.dumps({'text_id': title, 'text': query})
                     f.write(jitem + '\n')
                     f.flush()
             f.close()

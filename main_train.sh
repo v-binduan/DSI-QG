@@ -1,14 +1,14 @@
 python3 -m torch.distributed.launch --nproc_per_node=8 run.py \
         --task "docTquery" \
         --model_name "t5-large" \
-        --run_name "docTquery-NQ" \
-        --max_length 128 \
-        --train_file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/nq_train_query_content.tsv \
-        --valid_file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/nq_dev_query_content.tsv \
-        --output_dir "models/nq_docTquery_t5_large" \
+        --run_name "docTquery-Triviaqa-512" \
+        --max_length 512 \
+        --train_file /mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/doc2query_train.tsv \
+        --valid_file /mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/doc2query_dev.tsv \
+        --output_dir "models/triviaqa_docTquery_t5_large" \
         --learning_rate 0.0001 \
         --warmup_steps 0 \
-        --per_device_train_batch_size 8 \
+        --per_device_train_batch_size 4 \
         --per_device_eval_batch_size 4 \
         --evaluation_strategy steps \
         --eval_steps 100 \
@@ -20,5 +20,5 @@ python3 -m torch.distributed.launch --nproc_per_node=8 run.py \
         --load_best_model_at_end \
         --gradient_accumulation_steps 4 \
         --logging_steps 100 \
-        --report_to wandb \
+        --report_to none \
         --dataloader_drop_last False
