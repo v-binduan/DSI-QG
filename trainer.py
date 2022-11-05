@@ -143,3 +143,32 @@ class DocTqueryTrainer(Trainer):
         self.num_return_sequences = num_return_sequences
         self.top_k = top_k
         return super().predict(test_dataset, ignore_keys=ignore_keys, metric_key_prefix=metric_key_prefix)
+
+
+class EmbeddingTrainer(Trainer):
+    def __init__(self, **kwds):
+        super().__init__(**kwds)
+
+    def prediction_step(
+        self,
+        model: nn.Module,
+        inputs: Dict[str, Union[torch.Tensor, Any]],
+        prediction_loss_only: bool,
+        ignore_keys: Optional[List[str]] = None,
+    ) -> Tuple[Optional[torch.Tensor], Optional[torch.Tensor], Optional[torch.Tensor]]:
+        #'last_hidden_state', 'pooler_output'
+        outputs = self.model(
+            input_ids=inputs['input_ids'].to(self.args.device),
+            attention_mask=inputs['attention_mask'].to(self.args.device))
+        #(batch,1024)
+        labels = torch.tensor(inputs["labels"], device=self.args.device)
+        return (None,outputs['pooler_output'],labels)
+
+
+    def predict(
+            self,
+            test_dataset: Dataset,
+            ignore_keys: Optional[List[str]] = None,
+            metric_key_prefix: str = "test"
+    ):
+        return super().predict(test_dataset, ignore_keys=ignore_keys, metric_key_prefix=metric_key_prefix)

@@ -10,8 +10,11 @@ from transformers import (
     MT5ForConditionalGeneration,
     HfArgumentParser,
     set_seed,
+    BertTokenizer,
+    BertTokenizerFast,
+    BertModel
 )
-from trainer import DSITrainer, DocTqueryTrainer
+from trainer import DSITrainer, DocTqueryTrainer,EmbeddingTrainer
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
@@ -65,20 +68,25 @@ def main():
     parser = HfArgumentParser((TrainingArguments, RunArguments))
     training_args, run_args = parser.parse_args_into_dataclasses()
 
-    if 'mt5' in run_args.model_name:
-        tokenizer = MT5Tokenizer.from_pretrained(run_args.model_name, cache_dir='cache')
-        fast_tokenizer = MT5TokenizerFast.from_pretrained(run_args.model_name, cache_dir='cache')
-        if run_args.model_path:
-            model = MT5ForConditionalGeneration.from_pretrained(run_args.model_path, cache_dir='cache')
-        else:
-            model = MT5ForConditionalGeneration.from_pretrained(run_args.model_name, cache_dir='cache')
+    if run_args.task=="embedding":
+        tokenizer = BertTokenizer.from_pretrained(run_args.model_name, cache_dir='cache')
+        fast_tokenizer = BertTokenizerFast.from_pretrained(run_args.model_name, cache_dir='cache')
+        model = BertModel.from_pretrained(run_args.model_name, cache_dir='cache')
     else:
-        tokenizer = T5Tokenizer.from_pretrained(run_args.model_name, cache_dir='cache')
-        fast_tokenizer = T5TokenizerFast.from_pretrained(run_args.model_name, cache_dir='cache')
-        if run_args.model_path:
-            model = T5ForConditionalGeneration.from_pretrained(run_args.model_path, cache_dir='cache')
+        if 'mt5' in run_args.model_name:
+            tokenizer = MT5Tokenizer.from_pretrained(run_args.model_name, cache_dir='cache')
+            fast_tokenizer = MT5TokenizerFast.from_pretrained(run_args.model_name, cache_dir='cache')
+            if run_args.model_path:
+                model = MT5ForConditionalGeneration.from_pretrained(run_args.model_path, cache_dir='cache')
+            else:
+                model = MT5ForConditionalGeneration.from_pretrained(run_args.model_name, cache_dir='cache')
         else:
-            model = T5ForConditionalGeneration.from_pretrained(run_args.model_name, cache_dir='cache')
+            tokenizer = T5Tokenizer.from_pretrained(run_args.model_name, cache_dir='cache')
+            fast_tokenizer = T5TokenizerFast.from_pretrained(run_args.model_name, cache_dir='cache')
+            if run_args.model_path:
+                model = T5ForConditionalGeneration.from_pretrained(run_args.model_path, cache_dir='cache')
+            else:
+                model = T5ForConditionalGeneration.from_pretrained(run_args.model_name, cache_dir='cache')
 
     if run_args.task == "docTquery":
         train_dataset = IndexingTrainDataset(path_to_data=run_args.train_file,
@@ -168,7 +176,7 @@ def main():
                                           top_k=run_args.top_k,
                                           num_return_sequences=run_args.num_return_sequences,
                                           max_length=run_args.q_max_length)
-        with open("/mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/triviaqa_doc2query_base_512_15.tsv", 'w') as f:
+        with open("/mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/triviaqa_doc2query_large_512_15.tsv", 'w') as f:
             for batch_tokens, batch_ids in tqdm(zip(predict_results.predictions, predict_results.label_ids),
                                                 desc="Writing file"):
                 for tokens, docid in zip(batch_tokens, batch_ids):
@@ -179,6 +187,33 @@ def main():
                     f.flush()
             f.close()
 
+    elif run_args.task == 'embedding':
+        generate_dataset = GenerateDataset(path_to_data=run_args.valid_file,
+                                           max_length=run_args.max_length,
+                                           cache_dir='cache',
+                                           tokenizer=tokenizer)
+        trainer = EmbeddingTrainer(
+            model=model,
+            tokenizer=tokenizer,
+            args=training_args,
+            data_collator=QueryEvalCollator(
+                tokenizer,
+                padding='longest',
+            ),
+        )
+        predict_results = trainer.predict(generate_dataset)
+        print(predict_results)
+        assert 1==2
+        with open("/mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/triviaqa_bert_large_512_emb.tsv", 'w') as f:
+            for batch_tokens, batch_ids in tqdm(zip(predict_results.predictions, predict_results.label_ids),
+                                                desc="Writing file"):
+                for tokens, docid in zip(batch_tokens, batch_ids):
+                    query = fast_tokenizer.decode(tokens, skip_special_tokens=True)
+                    title, content = generate_dataset.data[docid[0]]
+                    jitem = json.dumps({'text_id': title, 'text': query})
+                    f.write(jitem + '\n')
+                    f.flush()
+            f.close()
     else:
         raise NotImplementedError("--task should be in 'DSI' or 'docTquery' or 'generation'")
 

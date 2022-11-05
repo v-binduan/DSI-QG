@@ -1,13 +1,11 @@
-python3 -m torch.distributed.launch --nproc_per_node=8 run.py \
-        --task generation \
-        --model_name t5-large \
-        --model_path models/nq_docTquery_t5_large/checkpoint-2000 \
+python3 -m torch.distributed.launch --nproc_per_node=6 run.py \
+        --task embedding \
+        --model_name bert-base-uncased \
         --per_device_eval_batch_size 16 \
-        --run_name docTquery-NQ-generation \
-        --max_length 512 \
-        --valid_file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/nq_doc_content.tsv \
+        --run_name docTquery-Triviaqa-embedding \
+        --max_length 32 \
+        --valid_file /mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/Trivia_doc_content_1000.tsv \
         --output_dir temp \
         --dataloader_num_workers 10 \
-        --report_to wandb \
+        --report_to none \
         --logging_steps 100 \
-        --num_return_sequences 10
