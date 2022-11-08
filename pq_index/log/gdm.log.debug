@@ -1,0 +1,126 @@
+INFO: 2022-08-31 14:52:23,578 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/datablob/v-binduan/NQ/Datasets/Kmeans_Init_3_128/29aa4e6a_94c5_492d_8540_32012b83fddb___Copy_Intermediate_Data_to_Azure_Blob___ed59c5f0___8_31_2022_02_38_28_PM/9a1d7ed5-b878-464b-826f-b155b6c7e3e5/6b465752_a3d6_4b70_8c6a_a621cc135029]
+INFO: 2022-08-31 14:52:23,578 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/datablob/v-binduan/NQ/Datasets/Kmeans_Init_3_128/29aa4e6a_94c5_492d_8540_32012b83fddb___Copy_Intermediate_Data_to_Azure_Blob___ed59c5f0___8_31_2022_02_38_28_PM/9a1d7ed5-b878-464b-826f-b155b6c7e3e5/6b465752_a3d6_4b70_8c6a_a621cc135029
+INFO: 2022-08-31 14:52:25,956 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-08-31 14:52:26,131 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-08-31 14:52:26,132 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:237][prepare_opqindex_by_file] read file time 2.5531392097473145
+INFO: 2022-08-31 14:52:26,229 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:239][prepare_opqindex_by_file] emb_list.shape:(109715, 60)
+INFO: 2022-08-31 14:52:26,230 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:245][prepare_opqindex_by_file] begin fit model
+INFO: 2022-08-31 14:52:33,544 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:248][prepare_opqindex_by_file] fit model time 7.313519716262817
+INFO: 2022-08-31 14:52:33,545 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:251][prepare_opqindex_by_file] begin encode
+INFO: 2022-08-31 14:52:33,748 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:254][prepare_opqindex_by_file] encode item time 0.20268821716308594
+INFO: 2022-08-31 14:52:34,535 16978 MainThread[140240068839168] [graphindex_stable_sdc_init_single.py:274][prepare_opqindex_by_file] index done cost time 0.9896113872528076
+INFO: 2022-09-01 10:18:40,958 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/datablob/v-binduan/NQ/Datasets/Kmeans_Init_6_100/75d7b3b8_a36f_4de9_a0a6_64848790fe6d___Copy_Intermediate_Data_to_Azure_Blob___ed59c5f0___9_1_2022_10_10_14_AM/4c32cf28-e857-4fd6-8163-578df7d96fc6/6b465752_a3d6_4b70_8c6a_a621cc135029]
+INFO: 2022-09-01 10:18:40,958 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/datablob/v-binduan/NQ/Datasets/Kmeans_Init_6_100/75d7b3b8_a36f_4de9_a0a6_64848790fe6d___Copy_Intermediate_Data_to_Azure_Blob___ed59c5f0___9_1_2022_10_10_14_AM/4c32cf28-e857-4fd6-8163-578df7d96fc6/6b465752_a3d6_4b70_8c6a_a621cc135029
+INFO: 2022-09-01 10:18:43,474 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-01 10:18:43,668 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-01 10:18:43,668 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:237][prepare_opqindex_by_file] read file time 2.7099244594573975
+INFO: 2022-09-01 10:18:43,761 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:239][prepare_opqindex_by_file] emb_list.shape:(109715, 60)
+INFO: 2022-09-01 10:18:43,761 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:245][prepare_opqindex_by_file] begin fit model
+INFO: 2022-09-01 10:18:54,750 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:248][prepare_opqindex_by_file] fit model time 10.987981081008911
+INFO: 2022-09-01 10:18:54,750 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:251][prepare_opqindex_by_file] begin encode
+INFO: 2022-09-01 10:18:54,948 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:254][prepare_opqindex_by_file] encode item time 0.1971435546875
+INFO: 2022-09-01 10:18:56,079 16984 MainThread[139947507926784] [graphindex_stable_sdc_init_single.py:274][prepare_opqindex_by_file] index done cost time 1.328190803527832
+INFO: 2022-09-01 14:45:06,913 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/datablob/v-binduan/NQ/Datasets/Kmeans_Init_6_100/75d7b3b8_a36f_4de9_a0a6_64848790fe6d___Copy_Intermediate_Data_to_Azure_Blob___ed59c5f0___9_1_2022_10_10_14_AM/4c32cf28-e857-4fd6-8163-578df7d96fc6/6b465752_a3d6_4b70_8c6a_a621cc135029]
+INFO: 2022-09-01 14:45:06,913 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/datablob/v-binduan/NQ/Datasets/Kmeans_Init_6_100/75d7b3b8_a36f_4de9_a0a6_64848790fe6d___Copy_Intermediate_Data_to_Azure_Blob___ed59c5f0___9_1_2022_10_10_14_AM/4c32cf28-e857-4fd6-8163-578df7d96fc6/6b465752_a3d6_4b70_8c6a_a621cc135029
+INFO: 2022-09-01 14:45:09,368 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-01 14:45:09,537 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-01 14:45:09,537 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:237][prepare_opqindex_by_file] read file time 2.623735189437866
+INFO: 2022-09-01 14:45:09,631 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:239][prepare_opqindex_by_file] emb_list.shape:(109715, 60)
+INFO: 2022-09-01 14:45:09,631 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:245][prepare_opqindex_by_file] begin fit model
+INFO: 2022-09-01 14:45:32,462 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:248][prepare_opqindex_by_file] fit model time 22.829479217529297
+INFO: 2022-09-01 14:45:32,463 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:251][prepare_opqindex_by_file] begin encode
+INFO: 2022-09-01 14:45:33,010 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:254][prepare_opqindex_by_file] encode item time 0.5465750694274902
+INFO: 2022-09-01 14:45:34,222 17001 MainThread[140320988686080] [graphindex_stable_sdc_init_single.py:274][prepare_opqindex_by_file] index done cost time 1.7588930130004883
+INFO: 2022-09-10 07:30:49,360 4953 MainThread[140503098783488] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index/doc_content_embedding_bert_32.tsv]
+INFO: 2022-09-10 07:30:49,360 4953 MainThread[140503098783488] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index/doc_content_embedding_bert_32.tsv
+INFO: 2022-09-10 07:31:05,446 4953 MainThread[140503098783488] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-10 07:31:07,011 4953 MainThread[140503098783488] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-10 07:31:07,011 4953 MainThread[140503098783488] [graphindex_stable_sdc_init_single.py:236][prepare_opqindex_by_file] read file time 17.65117883682251
+INFO: 2022-09-10 07:31:07,309 4953 MainThread[140503098783488] [graphindex_stable_sdc_init_single.py:238][prepare_opqindex_by_file] emb_list.shape:(109715, 768)
+INFO: 2022-09-10 07:31:35,789 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index/doc_content_embedding_bert_32.tsv]
+INFO: 2022-09-10 07:31:35,790 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index/doc_content_embedding_bert_32.tsv
+INFO: 2022-09-10 07:31:48,904 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-10 07:31:50,178 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-10 07:31:50,178 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:236][prepare_opqindex_by_file] read file time 14.38809609413147
+INFO: 2022-09-10 07:31:50,484 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:238][prepare_opqindex_by_file] emb_list.shape:(109715, 768)
+INFO: 2022-09-10 07:31:50,485 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:243][prepare_opqindex_by_file] begin fit model
+INFO: 2022-09-10 07:32:32,064 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:246][prepare_opqindex_by_file] fit model time 41.579551219940186
+INFO: 2022-09-10 07:32:32,065 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:249][prepare_opqindex_by_file] begin encode
+INFO: 2022-09-10 07:32:32,908 5113 MainThread[139851236943616] [graphindex_stable_sdc_init_single.py:252][prepare_opqindex_by_file] encode item time 0.8429195880889893
+INFO: 2022-09-10 07:33:42,090 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index/doc_content_embedding_bert_32.tsv]
+INFO: 2022-09-10 07:33:42,091 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index/doc_content_embedding_bert_32.tsv
+INFO: 2022-09-10 07:33:55,210 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-10 07:33:56,484 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-10 07:33:56,485 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:236][prepare_opqindex_by_file] read file time 14.393341064453125
+INFO: 2022-09-10 07:33:56,790 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:238][prepare_opqindex_by_file] emb_list.shape:(109715, 768)
+INFO: 2022-09-10 07:33:56,791 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:243][prepare_opqindex_by_file] begin fit model
+INFO: 2022-09-10 07:34:40,995 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:246][prepare_opqindex_by_file] fit model time 44.20415115356445
+INFO: 2022-09-10 07:34:40,996 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:249][prepare_opqindex_by_file] begin encode
+INFO: 2022-09-10 07:34:41,864 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:252][prepare_opqindex_by_file] encode item time 0.8683137893676758
+INFO: 2022-09-10 07:34:46,829 5329 MainThread[140406154417920] [graphindex_stable_sdc_init_single.py:272][prepare_opqindex_by_file] index done cost time 5.833424091339111
+INFO: 2022-09-10 07:36:13,944 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index/doc_content_embedding_bert_32.tsv]
+INFO: 2022-09-10 07:36:13,945 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index/doc_content_embedding_bert_32.tsv
+INFO: 2022-09-10 07:36:27,095 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-10 07:36:28,370 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-10 07:36:28,371 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:236][prepare_opqindex_by_file] read file time 14.425652027130127
+INFO: 2022-09-10 07:36:28,690 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:238][prepare_opqindex_by_file] emb_list.shape:(109715, 768)
+INFO: 2022-09-10 07:36:28,691 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:243][prepare_opqindex_by_file] begin fit model
+INFO: 2022-09-10 07:37:12,192 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:246][prepare_opqindex_by_file] fit model time 43.50055766105652
+INFO: 2022-09-10 07:37:12,193 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:249][prepare_opqindex_by_file] begin encode
+INFO: 2022-09-10 07:37:13,035 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:252][prepare_opqindex_by_file] encode item time 0.8424699306488037
+INFO: 2022-09-10 07:37:17,555 5605 MainThread[139811039094528] [graphindex_stable_sdc_init_single.py:272][prepare_opqindex_by_file] index done cost time 5.362027645111084
+INFO: 2022-09-10 15:36:25,503 36886 MainThread[140157972612864] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mbt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v2/doc_content_embedding_bert_32.tsv]
+INFO: 2022-09-10 15:36:25,503 36886 MainThread[140157972612864] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mbt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v2/doc_content_embedding_bert_32.tsv
+INFO: 2022-09-10 15:37:05,822 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v2/doc_content_embedding_bert_32.tsv]
+INFO: 2022-09-10 15:37:05,822 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v2/doc_content_embedding_bert_32.tsv
+INFO: 2022-09-10 15:37:22,460 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-10 15:37:24,078 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-10 15:37:24,078 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:236][prepare_opqindex_by_file] read file time 18.25545859336853
+INFO: 2022-09-10 15:37:24,369 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:238][prepare_opqindex_by_file] emb_list.shape:(109715, 768)
+INFO: 2022-09-10 15:37:24,370 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:243][prepare_opqindex_by_file] begin fit model
+INFO: 2022-09-10 15:38:08,455 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:246][prepare_opqindex_by_file] fit model time 44.08542490005493
+INFO: 2022-09-10 15:38:08,456 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:249][prepare_opqindex_by_file] begin encode
+INFO: 2022-09-10 15:38:09,344 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:252][prepare_opqindex_by_file] encode item time 0.8882062435150146
+INFO: 2022-09-10 15:38:13,068 37029 MainThread[139656074098432] [graphindex_stable_sdc_init_single.py:272][prepare_opqindex_by_file] index done cost time 4.611630916595459
+INFO: 2022-09-10 15:39:39,320 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v2/doc_content_embedding_bert_32.tsv]
+INFO: 2022-09-10 15:39:39,320 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v2/doc_content_embedding_bert_32.tsv
+INFO: 2022-09-10 15:39:52,480 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-10 15:39:53,758 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-10 15:39:53,758 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:236][prepare_opqindex_by_file] read file time 14.438185214996338
+INFO: 2022-09-10 15:39:54,052 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:238][prepare_opqindex_by_file] emb_list.shape:(109715, 768)
+INFO: 2022-09-10 15:39:54,052 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:243][prepare_opqindex_by_file] begin fit model
+INFO: 2022-09-10 15:40:37,413 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:246][prepare_opqindex_by_file] fit model time 43.361172676086426
+INFO: 2022-09-10 15:40:37,414 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:249][prepare_opqindex_by_file] begin encode
+INFO: 2022-09-10 15:40:38,324 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:252][prepare_opqindex_by_file] encode item time 0.9098122119903564
+INFO: 2022-09-10 15:40:43,219 37436 MainThread[140469692110592] [graphindex_stable_sdc_init_single.py:272][prepare_opqindex_by_file] index done cost time 5.804664850234985
+INFO: 2022-09-17 10:01:16,787 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v3_512/doc_content_embedding_bert_32.tsv]
+INFO: 2022-09-17 10:01:16,788 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v3_512/doc_content_embedding_bert_32.tsv
+INFO: 2022-09-17 10:01:32,986 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-17 10:01:34,561 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-17 10:01:34,561 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:236][prepare_opqindex_by_file] read file time 17.773592948913574
+INFO: 2022-09-17 10:01:34,853 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:238][prepare_opqindex_by_file] emb_list.shape:(109715, 768)
+INFO: 2022-09-17 10:01:34,854 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:243][prepare_opqindex_by_file] begin fit model
+INFO: 2022-09-17 10:02:20,148 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:246][prepare_opqindex_by_file] fit model time 45.29371905326843
+INFO: 2022-09-17 10:02:20,149 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:249][prepare_opqindex_by_file] begin encode
+INFO: 2022-09-17 10:02:21,035 36515 MainThread[140659092788992] [graphindex_stable_sdc_init_single.py:252][prepare_opqindex_by_file] encode item time 0.8855183124542236
+INFO: 2022-09-17 12:06:59,035 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v3_512/doc_content_embedding_bert_32.tsv]
+INFO: 2022-09-17 12:06:59,035 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/blob/v-binduan/NQ/Datasets/nq_preprocess/Doc_Index_v3_512/doc_content_embedding_bert_32.tsv
+INFO: 2022-09-17 12:07:12,215 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:144][read_term_emb_by_file] read 100000 emb
+INFO: 2022-09-17 12:07:13,499 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 109715 pid's embs
+INFO: 2022-09-17 12:07:13,499 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:236][prepare_opqindex_by_file] read file time 14.463903188705444
+INFO: 2022-09-17 12:07:13,795 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:238][prepare_opqindex_by_file] emb_list.shape:(109715, 768)
+INFO: 2022-09-17 12:07:13,796 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:243][prepare_opqindex_by_file] begin fit model
+INFO: 2022-09-17 12:07:58,461 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:246][prepare_opqindex_by_file] fit model time 44.66475296020508
+INFO: 2022-09-17 12:07:58,462 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:249][prepare_opqindex_by_file] begin encode
+INFO: 2022-09-17 12:07:59,338 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:252][prepare_opqindex_by_file] encode item time 0.8753108978271484
+INFO: 2022-09-17 12:08:04,634 909 MainThread[139647377966848] [graphindex_stable_sdc_init_single.py:272][prepare_opqindex_by_file] index done cost time 6.171069383621216
+INFO: 2022-11-08 08:12:04,175 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:233][prepare_opqindex_by_file] begin read file[/mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/Doc_Index_PQ_6_256_seq196/triviaqa_bert_base_emb_196.tsv]
+INFO: 2022-11-08 08:12:04,175 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:128][read_term_emb_by_file] reading file /mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/Doc_Index_PQ_6_256_seq196/triviaqa_bert_base_emb_196.tsv
+INFO: 2022-11-08 08:12:16,933 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:145][read_term_emb_by_file] read 73917 pid's embs
+INFO: 2022-11-08 08:12:16,934 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:236][prepare_opqindex_by_file] read file time 12.758678197860718
+INFO: 2022-11-08 08:12:17,137 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:238][prepare_opqindex_by_file] emb_list.shape:(73917, 768)
+INFO: 2022-11-08 08:12:17,138 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:243][prepare_opqindex_by_file] begin fit model
+INFO: 2022-11-08 08:12:56,510 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:246][prepare_opqindex_by_file] fit model time 39.37110733985901
+INFO: 2022-11-08 08:12:56,512 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:249][prepare_opqindex_by_file] begin encode
+INFO: 2022-11-08 08:12:57,373 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:252][prepare_opqindex_by_file] encode item time 0.8608338832855225
+INFO: 2022-11-08 08:12:59,249 8693 MainThread[140171092780864] [graphindex_stable_sdc_init_single.py:272][prepare_opqindex_by_file] index done cost time 2.7368502616882324
