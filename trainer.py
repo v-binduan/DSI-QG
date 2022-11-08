@@ -162,7 +162,7 @@ class EmbeddingTrainer(Trainer):
             attention_mask=inputs['attention_mask'].to(self.args.device))
         #(batch,1024)
         labels = torch.tensor(inputs["labels"], device=self.args.device)
-        return (None,outputs['pooler_output'],labels)
+        return (None,outputs['pooler_output'].detach(),labels.detach())
 
 
     def predict(

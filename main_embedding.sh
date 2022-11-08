@@ -1,10 +1,10 @@
-python3 -m torch.distributed.launch --nproc_per_node=6 run.py \
+python3 -m torch.distributed.launch --nproc_per_node=8 run.py \
         --task embedding \
         --model_name bert-base-uncased \
-        --per_device_eval_batch_size 16 \
+        --per_device_eval_batch_size 1 \
         --run_name docTquery-Triviaqa-embedding \
-        --max_length 32 \
-        --valid_file /mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/Trivia_doc_content_1000.tsv \
+        --max_length 196 \
+        --valid_file /mnt/blob/v-binduan/NQ/Datasets/new_datasets/downloads/data/retriever/triviaqa_nci/Trivia_doc_content_v1.tsv \
         --output_dir temp \
         --dataloader_num_workers 10 \
         --report_to none \

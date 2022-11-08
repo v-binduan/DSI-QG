@@ -64,7 +64,6 @@ class GenerateDataset(Dataset):
                                    return_tensors="pt",
                                    truncation='only_first',
                                    max_length=self.max_length).input_ids[0]
-                                   
         return input_ids, item
 
 
